@@ -1,14 +1,97 @@
-[English](/README.md) | [Chinese](/README.zh.md) | [Español](/README.es_ES.md)
+<div align="center">
 
-<p align="center"><a href="#"><img src="./media/3X-UI.png" alt="Image"></a></p>
+<img src="media/3X-UI.png" alt="3X-UI" width="720" />
 
-**Un Panel Web Avanzado • Construido sobre Xray Core**
+# 3X-UI
 
-[![](https://img.shields.io/github/v/release/xeefei/3x-ui.svg)](https://github.com/xeefei/3x-ui/releases)
-[![](https://img.shields.io/github/actions/workflow/status/xeefei/3x-ui/release.yml.svg)](#)
-[![GO Version](https://img.shields.io/github/go-mod/go-version/xeefei/3x-ui.svg)](#)
-[![Downloads](https://img.shields.io/github/downloads/xeefei/3x-ui/total.svg)](#)
-[![License](https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+**Gestiona conexiones, organiza tu panel.**
+
+![Go](https://img.shields.io/badge/Stack-Go-3178C6?style=flat-square)
+![Xray Core](https://img.shields.io/badge/Stack-Xray%20Core-339933?style=flat-square)
+![Docker](https://img.shields.io/badge/Stack-Docker-8A2BE2?style=flat-square)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square)](LICENSE)
+
+<p align="center">
+  <a href="#features">Características</a> •
+  <a href="#quick-start">Inicio rápido</a> •
+  <a href="#workflow">Flujo de trabajo</a> •
+  <a href="#structure">Estructura del proyecto</a> •
+  <a href="#documentation">Documentación</a>
+</p>
+
+[Español](README.es_ES.md) · [简体中文](README.md) · [Русский](README.ru_RU.md)
+
+[Repository](https://github.com/langesmesser/3x-ui)
+
+</div>
+
+---
+
+<a name="overview"></a>
+
+## Descripción
+
+Panel de administración multiprotocolo y multiusuario basado en Xray Core. Esta rama conserva las instrucciones originales de instalación, certificados, copias de seguridad y bots.
+
+This repository is a fork of [xeefei/X-Panel](https://github.com/xeefei/X-Panel). The branch's existing guides and author credits are retained; upstream releases are distinct from this branch's build artifacts.
+
+> The original documentation limits use to personal learning and discourages production use; back up configuration and databases before installation or migration.
+
+---
+
+<a name="features"></a>
+
+## Características
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>Protocolos y usuarios</h3>
+      <p>Administra conexiones, clientes, tráfico y límites.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>Panel web</h3>
+      <p>Configura el servicio desde la interfaz de administración.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>Operación</h3>
+      <p>Consulta instalación, certificados y copias de seguridad.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>Suscripciones y bots</h3>
+      <p>Conserva las instrucciones de suscripciones, Telegram y API.</p>
+    </td>
+  </tr>
+</table>
+
+---
+
+<a name="workflow"></a>
+
+## Flujo de trabajo
+
+```mermaid
+flowchart LR
+    n0["Administrator"] --> n1
+    n1["3X-UI panel"] --> n2
+    n2["Inbound and client configuration"] --> n3
+    n3["Xray Core"] --> n4
+    n4["Connection and traffic status"]
+```
+
+---
+
+<a name="quick-start"></a>
+
+## Inicio rápido
+
+Choose the path below that matches your system, client or deployment. Installation and release links follow this branch’s existing documentation.
+
+<a name="usage-guide"></a>
+
+## Guía de uso completa
 
 > **Descargo de responsabilidad:** Este proyecto es solo para aprendizaje personal y comunicación, por favor no lo uses con fines ilegales, por favor no lo uses en un entorno de producción
 
@@ -22,13 +105,13 @@
 
 - USDT (TRC20): `TYQEmQp1P65u9bG7KPehgJdvuokfb72YkZ`
 
-## Instalar y Actualizar
+### Instalar y Actualizar
 
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/xeefei/3x-ui/master/install.sh)
 ```
 
-## Instalar versión antigua (no recomendamos)
+### Instalar versión antigua (no recomendamos)
 
 Para instalar la versión deseada, utiliza el siguiente comando de instalación. Por ejemplo, ver `v1.7.9`:
 
@@ -36,12 +119,12 @@ Para instalar la versión deseada, utiliza el siguiente comando de instalación.
 VERSION=v1.7.9 && <(curl -Ls "https://raw.githubusercontent.com/xeefei/3x-ui/$VERSION/install.sh") $VERSION
 ```
 
-## Certificado SSL
+### Certificado SSL
 
 <details>
   <summary>Haga clic para ver los detalles del certificado SSL</summary>
 
-### ACME
+#### ACME
 
 Para gestionar certificados SSL utilizando ACME:
 
@@ -55,7 +138,7 @@ Para gestionar certificados SSL utilizando ACME:
    - **Show Existing Domains:** Mostrar todos los certificados de dominio disponibles en el servidor.  
    - **Set Certificate Paths for the Panel:** Especificar el certificado para tu dominio que será utilizado por el panel. 
 
-### Certbot
+#### Certbot
 
 Para instalar y usar Certbot:
 
@@ -65,7 +148,7 @@ certbot certonly --standalone --agree-tos --register-unsafely-without-email -d y
 certbot renew --dry-run
 ```
 
-### Cloudflare
+#### Cloudflare
 
 El script de gestión incluye una aplicación de certificado SSL integrada para Cloudflare. Para usar este script para solicitar un certificado, necesitas lo siguiente:
 
@@ -87,12 +170,12 @@ Al utilizarlo, simplemente ingresa tu `nombre de dominio`, `correo electrónico`
 
 </details>
 
-## Instalación y Actualización Manual
+### Instalación y Actualización Manual
 
 <details>
   <summary>Haz clic para más detalles de la instalación manual</summary>
 
-#### Uso
+##### Uso
 
 1. Para descargar la última versión del paquete comprimido directamente en tu servidor, ejecuta el siguiente comando:
 
@@ -140,12 +223,12 @@ systemctl restart x-ui
 
 </details>
 
-## Instalar con Docker
+### Instalar con Docker
 
 <details>
   <summary>Haz clic para más detalles del Docker</summary>
 
-#### Uso
+##### Uso
 
 1. Instala Docker:
 
@@ -200,7 +283,7 @@ eliminar 3x-ui de docker
 </details>
 
 
-## SO Recomendados
+### SO Recomendados
 
 - Ubuntu 20.04+
 - Debian 11+
@@ -217,7 +300,7 @@ eliminar 3x-ui de docker
 - OpenSUSE Tubleweed
 - Amazon Linux 2023
 
-## Arquitecturas y Dispositivos Compatibles
+### Arquitecturas y Dispositivos Compatibles
 
 <details>
   <summary>Haz clic para detalles de arquitecturas y dispositivos compatibles</summary>
@@ -237,7 +320,7 @@ Nuestra plataforma ofrece compatibilidad con una amplia gama de arquitecturas y 
 - **armv5 / arm / arm32**: Una arquitectura más antigua asociada principalmente con sistemas embebidos tempranos, es menos común hoy en día pero aún puede encontrarse en dispositivos heredados como versiones antiguas de Raspberry Pi y algunos teléfonos inteligentes más antiguos.
 </details>
 
-## Idiomas
+### Idiomas
 
 - Inglés
 - Farsi
@@ -249,7 +332,7 @@ Nuestra plataforma ofrece compatibilidad con una amplia gama de arquitecturas y 
 - Ucraniano
 
 
-## Características
+### Características
 
 - Monitoreo del Estado del Sistema
 - Búsqueda dentro de todas las reglas de entrada y clientes
@@ -267,12 +350,12 @@ Nuestra plataforma ofrece compatibilidad con una amplia gama de arquitecturas y 
 - Soporta exportar/importar base de datos desde el panel
 
 
-## Configuración Predeterminada del Panel
+### Configuración Predeterminada del Panel
 
 <details>
   <summary>Haz clic para ver los detalles de la configuración predeterminada</summary>
 
-### Nombre de usuario, Contraseña, Puerto y Ruta Base Web
+#### Nombre de usuario, Contraseña, Puerto y Ruta Base Web
 
 Si elige no modificar estas configuraciones, se generarán aleatoriamente (esto no se aplica a Docker).
 
@@ -281,11 +364,11 @@ Si elige no modificar estas configuraciones, se generarán aleatoriamente (esto 
 - **Contraseña:** admin
 - **Puerto:** 2053
 
-### Gestión de la Base de Datos:
+#### Gestión de la Base de Datos:
 
   Puedes realizar copias de seguridad y restauraciones de la base de datos directamente desde el panel.
 
-### Ruta Base Web
+#### Ruta Base Web
   - /etc/x-ui/x-ui.db
 - **Ruta de Configuración de Xray:**
   - /usr/local/x-ui/bin/config.json
@@ -308,7 +391,7 @@ Si elige no modificar estas configuraciones, se generarán aleatoriamente (esto 
 3. **Ver Configuración Actual:**
    - Para ver tu configuración actual, utiliza el comando `x-ui settings` en el terminal o selecciona `Ver Configuración Actual` en `x-ui`.
 
-### Recomendación de Seguridad:
+#### Recomendación de Seguridad:
 - Para mayor seguridad, utiliza una palabra larga y aleatoria en la estructura de tu URL.
 
 **Ejemplos:**
@@ -317,12 +400,12 @@ Si elige no modificar estas configuraciones, se generarán aleatoriamente (esto 
 
 </details>
 
-## Configuración de WARP
+### Configuración de WARP
 
 <details>
   <summary>Haz clic para ver los detalles de la configuración de WARP</summary>
 
-#### Uso
+##### Uso
 
 **Para versiones `v2.1.0` y posteriores:**
 
@@ -330,12 +413,12 @@ WARP está integrado, no se requiere instalación adicional. Simplemente habilit
 
 </details>
 
-## Límite de IP
+### Límite de IP
 
 <details>
   <summary>Haz clic para ver los detalles del límite de IP</summary>
 
-#### Uso
+##### Uso
 
 **Nota:** El Límite de IP no funcionará correctamente cuando uses Túnel IP.
 
@@ -374,12 +457,12 @@ Para habilitar la funcionalidad de límite de IP, necesitas instalar `fail2ban` 
 
 </details>
 
-## Bot de Telegram
+### Bot de Telegram
 
 <details>
   <summary>Haz clic para más detalles del bot de Telegram</summary>
 
-#### Uso
+##### Uso
 
 El panel web admite tráfico diario, inicio de sesión en el panel, copia de seguridad de la base de datos, estado del sistema, información del cliente y otras notificaciones y funciones a través del Bot de Telegram. Para usar el bot, debes establecer los parámetros relacionados con el bot en el panel, que incluyen:
 
@@ -401,7 +484,7 @@ El panel web admite tráfico diario, inicio de sesión en el panel, copia de seg
 - `@weekly` - Notificación semanal
 - `@every 8h` - Notifica cada 8 horas
 
-### Funcionalidades del Bot de Telegram
+#### Funcionalidades del Bot de Telegram
 
 - Reporte periódico
 - Notificación de inicio de sesión
@@ -417,7 +500,7 @@ El panel web admite tráfico diario, inicio de sesión en el panel, copia de seg
 - Recibir copia de seguridad bajo demanda y en informes periódicos
 - Bot multilingüe
 
-### Configuración del Bot de Telegram
+#### Configuración del Bot de Telegram
 
 - Inicia [Botfather](https://t.me/BotFather) en tu cuenta de Telegram:
     ![Botfather](./media/botfather.png)
@@ -439,12 +522,12 @@ Ingresa el ID de chat de usuario en el campo de entrada número 4. Las cuentas d
 
 </details>
 
-## Rutas de API
+### Rutas de API
 
 <details>
   <summary>Haz clic para más detalles de las rutas de API</summary>
 
-#### Uso
+##### Uso
 
 - [Documentación de API](https://documenter.getpostman.com/view/5146551/2sAXxP8Y12)
 - `/login` con `POST` datos de usuario: `{username: '', password: ''}` para iniciar sesión
@@ -479,12 +562,12 @@ Ingresa el ID de chat de usuario en el campo de entrada número 4. Las cuentas d
 - [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/5146551-e6aac565-e0e2-46df-acff-2607a51bbd04?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D5146551-e6aac565-e0e2-46df-acff-2607a51bbd04%26entityType%3Dcollection%26workspaceId%3Dd64f609f-485a-4951-9b8f-876b3f917124)
 </details>
 
-## Variables de Entorno
+### Variables de Entorno
 
 <details>
   <summary>Haz clic para más detalles de las variables de entorno</summary>
 
-#### Uso
+##### Uso
 
 | Variable       |                      Tipo                      | Predeterminado |
 | -------------- | :--------------------------------------------: | :------------- |
@@ -502,7 +585,7 @@ XUI_BIN_FOLDER="bin" XUI_DB_FOLDER="/etc/x-ui" go build main.go
 
 </details>
 
-## Vista previa
+### Vista previa
 
 ![1](./media/1.png)
 ![2](./media/2.png)
@@ -512,15 +595,67 @@ XUI_BIN_FOLDER="bin" XUI_DB_FOLDER="/etc/x-ui" go build main.go
 ![6](./media/6.png)
 ![7](./media/7.png)
 
-## Un agradecimiento especial a
+### Un agradecimiento especial a
 
 - [alireza0](https://github.com/alireza0/)
 
-## Reconocimientos
+### Reconocimientos
 
 - [Iran v2ray rules](https://github.com/chocolate4u/Iran-v2ray-rules) (Licencia: **GPL-3.0**): _Reglas de enrutamiento mejoradas de v2ray/xray y v2ray/xray-clients con dominios iraníes integrados y un enfoque en seguridad y bloqueo de anuncios._
 - [Vietnam Adblock rules](https://github.com/vuong2023/vn-v2ray-rules) (License: **GPL-3.0**): _Un dominio alojado en Vietnam y una lista de bloqueo con la máxima eficiencia para vietnamitas._
 
-## Estrellas a lo largo del tiempo
+### Estrellas a lo largo del tiempo
 
 [![Stargazers over time](https://starchart.cc/xeefei/3x-ui.svg)](https://starchart.cc/xeefei/3x-ui)
+
+---
+
+<a name="structure"></a>
+
+## Estructura del proyecto
+
+```text
+3x-ui/
+├── main.go                 # Program entry point
+├── web/                    # Panel interface and routing
+├── database/               # Database models and access
+├── xray/                   # Xray configuration and process management
+├── install.sh              # Installation script
+└── media/                  # Logo and guide screenshots
+```
+
+---
+
+<a name="documentation"></a>
+
+## Documentación
+
+- [Guía de uso completa](#usage-guide)
+
+---
+
+<a name="contributing"></a>
+
+## Contribuciones
+
+When reporting an issue, include the OS, version, reproduction steps, expected behavior and redacted logs. Check the relevant guidance and implementation, and run validation appropriate to your change.
+
+For upstream features and releases, use the original project links retained above.
+
+---
+
+<a name="license"></a>
+
+## Licencia y atribución
+
+See [GPL-3.0](LICENSE) for the license.
+
+<div align="center">
+
+### Project Activity
+
+[![Star History](https://api.star-history.com/svg?repos=langesmesser/3x-ui&type=Date)](https://www.star-history.com/#langesmesser/3x-ui&Date)
+
+[Contributors](https://github.com/langesmesser/3x-ui/graphs/contributors)
+
+</div>

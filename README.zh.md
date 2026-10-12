@@ -1,14 +1,98 @@
-[English](/README.md) | [Chinese](/README.zh.md) | [Español](/README.es_ES.md)
+<div align="center">
 
-<p align="center"><a href="#"><img src="./media/3X-UI.png" alt="Image"></a></p>
+<img src="media/3X-UI.png" alt="3X-UI" width="720" />
 
-**一个更好的面板 • 基于Xray Core构建**
+# 3X-UI
 
-[![](https://img.shields.io/github/v/release/xeefei/3x-ui.svg)](https://github.com/xeefei/3x-ui/releases)
-[![](https://img.shields.io/github/actions/workflow/status/xeefei/3x-ui/release.yml.svg)](#)
-[![GO Version](https://img.shields.io/github/go-mod/go-version/xeefei/3x-ui.svg)](#)
-[![Downloads](https://img.shields.io/github/downloads/xeefei/3x-ui/total.svg)](#)
-[![License](https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+**Manage connections, organize your panel.**  
+*管理连接，让面板井然有序。*
+
+![Go](https://img.shields.io/badge/Stack-Go-3178C6?style=flat-square)
+![Xray Core](https://img.shields.io/badge/Stack-Xray%20Core-339933?style=flat-square)
+![Docker](https://img.shields.io/badge/Stack-Docker-8A2BE2?style=flat-square)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square)](LICENSE)
+
+<p align="center">
+  <a href="#features">核心特性</a> •
+  <a href="#quick-start">快速上手</a> •
+  <a href="#workflow">工作流程</a> •
+  <a href="#structure">项目结构</a> •
+  <a href="#documentation">文档导航</a>
+</p>
+
+[Español](README.es_ES.md) · [简体中文](README.md) · [Русский](README.ru_RU.md)
+
+[仓库主页](https://github.com/langesmesser/3x-ui)
+
+</div>
+
+---
+
+<a name="overview"></a>
+
+## 项目简介
+
+基于 Xray Core 的多协议、多用户管理面板。本分支保留中文优化版的安装、迁移、证书、备份与机器人说明。
+
+本仓库是 [xeefei/X-Panel](https://github.com/xeefei/X-Panel) 的 Fork。下方保留本分支现有指南与原作者来源；上游发行内容不等同于本分支构建产物。
+
+> 本项目原说明限定为个人学习交流，不建议用于生产环境；安装与迁移前先备份配置和数据库。
+
+---
+
+<a name="features"></a>
+
+## 核心特性
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>多协议与多用户</h3>
+      <p>管理 Xray 入站、客户端、到期时间、流量与 IP 限制。</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>中文工作流</h3>
+      <p>本分支说明包含中文安装提示、面板与机器人使用流程。</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>运维入口</h3>
+      <p>保留证书配置、Docker 部署、版本安装及数据库备份恢复指南。</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>订阅与机器人</h3>
+      <p>提供订阅、Telegram 机器人、API 与环境变量说明。</p>
+    </td>
+  </tr>
+</table>
+
+---
+
+<a name="workflow"></a>
+
+## 工作流程
+
+```mermaid
+flowchart LR
+    n0["Administrator"] --> n1
+    n1["3X-UI panel"] --> n2
+    n2["Inbound and client configuration"] --> n3
+    n3["Xray Core"] --> n4
+    n4["Connection and traffic status"]
+```
+
+---
+
+<a name="quick-start"></a>
+
+## 快速上手
+
+按下方指南选择与你的系统、客户端或部署方式相符的入口。安装与发行地址沿用本分支现有说明。
+
+<a name="usage-guide"></a>
+
+## 完整使用指南
 
 > **Disclaimer:** 此项目仅供个人学习交流，请不要用于非法目的，请不要在生产环境中使用。
 
@@ -22,13 +106,13 @@
 
 - USDT (TRC20): `TYQEmQp1P65u9bG7KPehgJdvuokfb72YkZ`
 
-## 安装 & 升级
+### 安装 & 升级
 
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/xeefei/3x-ui/master/install.sh)
 ```
 
-## 安装指定版本
+### 安装指定版本
 
 若需要安装指定的版本，请将该版本添加到安装命令的末尾。 e.g., ver `v2.3.13`:
 
@@ -36,12 +120,12 @@ bash <(curl -Ls https://raw.githubusercontent.com/xeefei/3x-ui/master/install.sh
 bash <(curl -Ls https://raw.githubusercontent.com/xeefei/3x-ui/master/install.sh) v2.3.13
 ```
 
-## SSL 认证
+### SSL 认证
 
 <details>
   <summary>点击查看 SSL 认证</summary>
 
-### Cloudflare
+#### Cloudflare
 
 管理脚本具有用于 Cloudflare 的内置 SSL 证书应用程序。若要使用此脚本申请证书，需要满足以下条件：
 
@@ -52,7 +136,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/xeefei/3x-ui/master/install.sh
 **1:** 在终端中运行`x-ui`， 选择 `Cloudflare SSL Certificate`.
 
 
-### Certbot
+#### Certbot
 ```
 apt-get install certbot -y
 certbot certonly --standalone --agree-tos --register-unsafely-without-email -d yourdomain.com
@@ -63,12 +147,12 @@ certbot renew --dry-run
 
 </details>
 
-## 手动安装 & 升级
+### 手动安装 & 升级
 
 <details>
   <summary>点击查看 手动安装 & 升级</summary>
 
-#### 使用
+##### 使用
 
 1. 若要将最新版本的压缩包直接下载到服务器，请运行以下命令：
 
@@ -116,12 +200,12 @@ systemctl restart x-ui
 
 </details>
 
-## 通过Docker安装
+### 通过Docker安装
 
 <details>
   <summary>点击查看 通过Docker安装</summary>
 
-#### 使用
+##### 使用
 
 1. 安装Docker：
 
@@ -176,7 +260,7 @@ systemctl restart x-ui
 </details>
 
 
-## 建议使用的操作系统
+### 建议使用的操作系统
 
 - Ubuntu 20.04+
 - Debian 11+
@@ -189,7 +273,7 @@ systemctl restart x-ui
 - Rockylinux 9+
 - OpenSUSE Tubleweed
 
-## 支持的架构和设备
+### 支持的架构和设备
 <details>
   <summary>点击查看 支持的架构和设备</summary>
 
@@ -208,7 +292,7 @@ systemctl restart x-ui
 - **armv5 / arm / arm32**: 它是一种主要与早期嵌入式系统相关的旧架构，目前不太常见，但仍可能出现在早期 Raspberry Pi 版本和一些旧智能手机等传统设备中。
 </details>
 
-## Languages
+### Languages
 
 - English（英语）
 - Farsi（伊朗语）
@@ -220,7 +304,7 @@ systemctl restart x-ui
 - Ukrainian（乌克兰语）
 
 
-## Features
+### Features
 
 - 系统状态监控
 - 在所有入站和客户端中搜索
@@ -238,7 +322,7 @@ systemctl restart x-ui
 - 支持从面板导出/导入数据库
 
 
-## 默认设置
+### 默认设置
 
 <details>
   <summary>点击查看 默认设置</summary>
@@ -259,12 +343,12 @@ systemctl restart x-ui
  
 </details>
 
-## WARP 配置
+### WARP 配置
 
 <details>
   <summary>点击查看 WARP 配置</summary>
 
-#### 使用
+##### 使用
 
 如果要在 v2.1.0 之前使用 WARP 路由，请按照以下步骤操作：
 
@@ -290,12 +374,12 @@ systemctl restart x-ui
 
 </details>
 
-## IP 限制
+### IP 限制
 
 <details>
   <summary>点击查看 IP 限制</summary>
 
-#### 使用
+##### 使用
 
 **注意：** 使用 IP 隧道时，IP 限制无法正常工作。
 
@@ -323,12 +407,12 @@ systemctl restart x-ui
 
 </details>
 
-## Telegram 机器人
+### Telegram 机器人
 
 <details>
   <summary>点击查看 Telegram 机器人</summary>
 
-#### 使用
+##### 使用
 
 Web 面板通过 Telegram Bot 支持每日流量、面板登录、数据库备份、系统状态、客户端信息等通知和功能。要使用机器人，您需要在面板中设置机器人相关参数，包括：
 
@@ -350,7 +434,7 @@ Web 面板通过 Telegram Bot 支持每日流量、面板登录、数据库备�
 - `@weekly` - 每周通知
 - `@every 8h` - 每8小时通知
 
-### Telegram Bot 功能
+#### Telegram Bot 功能
 
 - 定期报告
 - 登录通知
@@ -366,7 +450,7 @@ Web 面板通过 Telegram Bot 支持每日流量、面板登录、数据库备�
 - 根据请求和定期报告接收备份
 - 多语言机器人
 
-### 注册 Telegram bot
+#### 注册 Telegram bot
 
 - 与 [Botfather](https://t.me/BotFather) 对话：
     ![Botfather](./media/botfather.png)
@@ -388,12 +472,12 @@ Web 面板通过 Telegram Bot 支持每日流量、面板登录、数据库备�
 
 </details>
 
-## API 路由
+### API 路由
 
 <details>
   <summary>点击查看 API 路由</summary>
 
-#### 使用
+##### 使用
 
 - `/login` 使用 `POST` 用户名称 & 密码： `{username: '', password: ''}` 登录
 - `/panel/api/inbounds` 以下操作的基础：
@@ -429,12 +513,12 @@ Web 面板通过 Telegram Bot 支持每日流量、面板登录、数据库备�
 - [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/16802678-1a4c9270-ac77-40ed-959a-7aa56dc4a415?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D16802678-1a4c9270-ac77-40ed-959a-7aa56dc4a415%26entityType%3Dcollection%26workspaceId%3D2cd38c01-c851-4a15-a972-f181c23359d9)
 </details>
 
-## 环境变量
+### 环境变量
 
 <details>
   <summary>点击查看 环境变量</summary>
 
-#### Usage
+##### Usage
 
 | 变量           |                      Type                      | 默认          |
 | -------------- | :--------------------------------------------: | :------------ |
@@ -452,7 +536,7 @@ XUI_BIN_FOLDER="bin" XUI_DB_FOLDER="/etc/x-ui" go build main.go
 
 </details>
 
-## 预览
+### 预览
 
 ![1](./media/1.png)
 ![2](./media/2.png)
@@ -462,15 +546,67 @@ XUI_BIN_FOLDER="bin" XUI_DB_FOLDER="/etc/x-ui" go build main.go
 ![6](./media/6.png)
 ![7](./media/7.png)
 
-## 特别感谢
+### 特别感谢
 
 - [alireza0](https://github.com/alireza0/)
 
-## 致谢
+### 致谢
 
 - [Iran v2ray rules](https://github.com/chocolate4u/Iran-v2ray-rules) (License: **GPL-3.0**): _Enhanced v2ray/xray and v2ray/xray-clients routing rules with built-in Iranian domains and a focus on security and adblocking._
 - [Vietnam Adblock rules](https://github.com/vuong2023/vn-v2ray-rules) (License: **GPL-3.0**): _A hosted domain hosted in Vietnam and blocklist with the most efficiency for Vietnamese._
 
-## Star趋势
+### Star趋势
 
 [![Stargazers over time](https://starchart.cc/xeefei/3x-ui.svg)](https://starchart.cc/xeefei/3x-ui)
+
+---
+
+<a name="structure"></a>
+
+## 项目结构
+
+```text
+3x-ui/
+├── main.go                 # 程序入口
+├── web/                    # 管理界面与服务端路由
+├── database/               # 数据库模型与访问
+├── xray/                   # Xray 配置与进程管理
+├── install.sh              # 安装脚本
+└── media/                  # Logo 与教程截图
+```
+
+---
+
+<a name="documentation"></a>
+
+## 文档导航
+
+- [完整使用指南](#usage-guide)
+
+---
+
+<a name="contributing"></a>
+
+## 参与贡献
+
+反馈时请说明系统、版本、使用步骤、预期行为和脱敏日志。提交改动前核对相关指南与实际实现，并运行与改动有关的验证。
+
+有关上游功能和发行的问题，可通过上方原作者入口反馈。
+
+---
+
+<a name="license"></a>
+
+## 许可证与来源
+
+许可证见 [GPL-3.0](LICENSE)。
+
+<div align="center">
+
+### 项目活动
+
+[![Star History](https://api.star-history.com/svg?repos=langesmesser/3x-ui&type=Date)](https://www.star-history.com/#langesmesser/3x-ui&Date)
+
+[贡献记录](https://github.com/langesmesser/3x-ui/graphs/contributors)
+
+</div>

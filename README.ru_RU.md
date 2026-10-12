@@ -1,14 +1,97 @@
-[English](/README.md) | [中文](/README.zh_CN.md) | [Español](/README.es_ES.md) | [Русский](/README.ru_RU.md)
+<div align="center">
 
-<p align="center"><a href="#"><img src="./media/3X-UI.png" alt="Image"></a></p>
+<img src="media/3X-UI.png" alt="3X-UI" width="720" />
 
-**Продвинутая веб-панель • Построена на основе Xray Core**
+# 3X-UI
 
-[![](https://img.shields.io/github/v/release/mhsanaei/3x-ui.svg)](https://github.com/MHSanaei/3x-ui/releases)
-[![](https://img.shields.io/github/actions/workflow/status/mhsanaei/3x-ui/release.yml.svg)](#)
-[![GO Version](https://img.shields.io/github/go-mod/go-version/mhsanaei/3x-ui.svg)](#)
-[![Downloads](https://img.shields.io/github/downloads/mhsanaei/3x-ui/total.svg)](#)
-[![License](https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+**Управляйте подключениями и настройками панели.**
+
+![Go](https://img.shields.io/badge/Stack-Go-3178C6?style=flat-square)
+![Xray Core](https://img.shields.io/badge/Stack-Xray%20Core-339933?style=flat-square)
+![Docker](https://img.shields.io/badge/Stack-Docker-8A2BE2?style=flat-square)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square)](LICENSE)
+
+<p align="center">
+  <a href="#features">Возможности</a> •
+  <a href="#quick-start">Быстрый старт</a> •
+  <a href="#workflow">Рабочий процесс</a> •
+  <a href="#structure">Структура проекта</a> •
+  <a href="#documentation">Документация</a>
+</p>
+
+[Español](README.es_ES.md) · [简体中文](README.md) · [Русский](README.ru_RU.md)
+
+[Repository](https://github.com/langesmesser/3x-ui)
+
+</div>
+
+---
+
+<a name="overview"></a>
+
+## Описание
+
+Многопротокольная панель управления пользователями на основе Xray Core. В этой ветке сохранены инструкции по установке, сертификатам, резервным копиям и ботам.
+
+This repository is a fork of [xeefei/X-Panel](https://github.com/xeefei/X-Panel). The branch's existing guides and author credits are retained; upstream releases are distinct from this branch's build artifacts.
+
+> The original documentation limits use to personal learning and discourages production use; back up configuration and databases before installation or migration.
+
+---
+
+<a name="features"></a>
+
+## Возможности
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>Протоколы и пользователи</h3>
+      <p>Управляйте подключениями, клиентами, трафиком и ограничениями.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>Веб-панель</h3>
+      <p>Настраивайте сервис через интерфейс управления.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>Эксплуатация</h3>
+      <p>Читайте инструкции по установке, сертификатам и резервным копиям.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>Подписки и боты</h3>
+      <p>Сохранены инструкции для подписок, Telegram и API.</p>
+    </td>
+  </tr>
+</table>
+
+---
+
+<a name="workflow"></a>
+
+## Рабочий процесс
+
+```mermaid
+flowchart LR
+    n0["Administrator"] --> n1
+    n1["3X-UI panel"] --> n2
+    n2["Inbound and client configuration"] --> n3
+    n3["Xray Core"] --> n4
+    n4["Connection and traffic status"]
+```
+
+---
+
+<a name="quick-start"></a>
+
+## Быстрый старт
+
+Choose the path below that matches your system, client or deployment. Installation and release links follow this branch’s existing documentation.
+
+<a name="usage-guide"></a>
+
+## Полное руководство
 
 > **Отказ от ответственности:** Этот проект предназначен только для личного обучения и общения. Пожалуйста, не используйте его в незаконных целях и не применяйте в производственной среде.
 
@@ -22,13 +105,13 @@
 
 - USDT (TRC20): `TYQEmQp1P65u9bG7KPehgJdvuokfb72YkZ`
 
-## Установка и обновление
+### Установка и обновление
 
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 ```
 
-## Установить старую версию (мы не рекомендуем)
+### Установить старую версию (мы не рекомендуем)
 
 Чтобы установить желаемую версию, используйте следующую команду установки. Например, ver `v1.7.9`:
 
@@ -36,12 +119,12 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 VERSION=v1.7.9 && <(curl -Ls "https://raw.githubusercontent.com/mhsanaei/3x-ui/$VERSION/install.sh") $VERSION
 ```
 
-## SSL Сертификат
+### SSL Сертификат
 
 <details>
   <summary>Нажмите для получения информации об SSL сертификате</summary>
 
-### ACME
+#### ACME
 
 Для управления SSL сертификатами с помощью ACME:
 
@@ -55,7 +138,7 @@ VERSION=v1.7.9 && <(curl -Ls "https://raw.githubusercontent.com/mhsanaei/3x-ui/$
    - **Show Existing Domains:** Отобразить все сертификаты доменов, доступные на сервере.  
    - **Set Certificate Paths for the Panel:** Укажите сертификат для вашего домена, который будет использоваться панелью.
 
-### Certbot
+#### Certbot
 
 Для установки и использования Certbot:
 
@@ -65,7 +148,7 @@ certbot certonly --standalone --agree-tos --register-unsafely-without-email -d �
 certbot renew --dry-run
 ```
 
-### Cloudflare
+#### Cloudflare
 
 Скрипт управления включает встроенное приложение для получения SSL сертификата через Cloudflare. Чтобы использовать этот скрипт для запроса сертификата, вам потребуется следующее:
 
@@ -87,12 +170,12 @@ certbot renew --dry-run
 
 </details>
 
-## Ручная установка и обновление
+### Ручная установка и обновление
 
 <details>
   <summary>Нажмите для получения информации о ручной установке</summary>
 
-#### Использование
+##### Использование
 
 1. Чтобы скачать последнюю версию архива напрямую на ваш сервер, выполните следующую команду:
 
@@ -142,12 +225,12 @@ systemctl restart x-ui
 
 </details>
 
-## Установка с помощью Docker
+### Установка с помощью Docker
 
 <details>
   <summary>Нажмите для получения информации о Docker</summary>
 
-#### Использование
+##### Использование
 
 1. **Установите Docker:**
 
@@ -203,11 +286,11 @@ systemctl restart x-ui
 
 </details>
 
-## Настройки Nginx
+### Настройки Nginx
 <details>
   <summary>Нажмите чтобы просмотреть конфигурацию обратного прокси-сервера</summary>
 
-#### Обратный прокси-сервер Nginx
+##### Обратный прокси-сервер Nginx
 ```nginx
 location / {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -221,7 +304,7 @@ location / {
 }
 ```
 
-#### Nginx sub-path
+##### Nginx sub-path
 - Убедитесь, что "корневой путь URL адреса панели" в настройках панели и `/sub` совпадают.
 - В настройках панели `url` должен заканчиваться на `/`.    
 
@@ -239,7 +322,7 @@ location /sub {
 ```
 </details>
 
-## Рекомендуемые ОС
+### Рекомендуемые ОС
 
 - Ubuntu 20.04+
 - Debian 11+
@@ -256,7 +339,7 @@ location /sub {
 - OpenSUSE Tubleweed
 - Amazon Linux 2023
 
-## Поддерживаемые архитектуры и устройства
+### Поддерживаемые архитектуры и устройства
 
 <details>
   <summary>Нажмите для получения информации о поддерживаемых архитектурах и устройствах</summary>
@@ -278,7 +361,7 @@ location /sub {
 - **s390x**: Эта архитектура обычно используется в мейнфреймах IBM и обеспечивает высокую производительность и надежность для корпоративных рабочих нагрузок.
 </details>
 
-## Языки
+### Языки
 
 - Английский
 - Фарси
@@ -291,7 +374,7 @@ location /sub {
 - Турецкий
 - Португальский (Бразилия)
 
-## Возможности
+### Возможности
 
 - Мониторинг состояния системы
 - Поиск по всем входящим подключениям и клиентам
@@ -308,12 +391,12 @@ location /sub {
 - Поддержка изменения конфигураций по различным элементам, предоставленным в панели
 - Поддержка экспорта/импорта базы данных из панели
 
-## Настройки панели по умолчанию
+### Настройки панели по умолчанию
 
 <details>
   <summary>Нажмите для получения информации о настройках по умолчанию</summary>
 
-### Имя пользователя, Пароль, Порт и Web Base Path
+#### Имя пользователя, Пароль, Порт и Web Base Path
 
 Если вы не измените эти настройки, они будут сгенерированы случайным образом (это не относится к Docker).
 
@@ -322,14 +405,14 @@ location /sub {
 - **Пароль:** admin
 - **Порт:** 2053
 
-### Управление базой данных:
+#### Управление базой данных:
 
 Вы можете удобно выполнять резервное копирование и восстановление базы данных прямо из панели.
 
 - **Путь к базе данных:**
   - `/etc/x-ui/x-ui.db`
 
-### Webbasepath
+#### Webbasepath
 
 1. **Сбросить webbasepath:**
    - Откройте терминал.
@@ -342,7 +425,7 @@ location /sub {
 3. **Просмотр текущих настроек:**
    - Чтобы просмотреть текущие настройки, используйте команду `x-ui settings` в терминале или опцию `View Current Settings` в `x-ui`.
 
-### Рекомендации по безопасности:
+#### Рекомендации по безопасности:
 - Для повышения безопасности используйте длинное случайное слово в структуре вашего URL.
 
 **Примеры:**
@@ -351,12 +434,12 @@ location /sub {
 
 </details>
 
-## Настройка WARP
+### Настройка WARP
 
 <details>
   <summary>Нажмите для получения информации о настройке WARP</summary>
 
-#### Использование
+##### Использование
 
 **Для версий `v2.1.0` и новее:**
 
@@ -364,12 +447,12 @@ WARP встроен, и дополнительная установка не т�
 
 </details>
 
-## Ограничение IP
+### Ограничение IP
 
 <details>
   <summary>Нажмите для получения информации об ограничении IP</summary>
 
-#### Использование
+##### Использование
 
 **Примечание:** Ограничение IP не будет работать корректно при использовании IP Tunnel.
 
@@ -408,12 +491,12 @@ WARP встроен, и дополнительная установка не т�
 
 </details>
 
-## Телеграм-бот
+### Телеграм-бот
 
 <details>
   <summary>Нажмите для получения информации о телеграм-боте</summary>
 
-#### Использование
+##### Использование
 
 Веб-панель поддерживает уведомления и функции, такие как ежедневный трафик, вход в панель, резервное копирование базы данных, состояние системы, информация о клиентах и другие, через телеграм-бота. Чтобы использовать бота, вам нужно настроить параметры, связанные с ботом, в панели, включая:
 
@@ -434,7 +517,7 @@ WARP встроен, и дополнительная установка не т�
 - `@weekly` - Еженедельное уведомление
 - `@every 8h` - Уведомлять каждые 8 часов
 
-### Возможности телеграм-бота
+#### Возможности телеграм-бота
 
 - Периодические отчеты
 - Уведомления о входе
@@ -450,7 +533,7 @@ WARP встроен, и дополнительная установка не т�
 - Получение резервных копий по запросу и в периодических отчётах
 - Многоязычный бот
 
-### Настройка телеграм-бота
+#### Настройка телеграм-бота
 
 - Запустите [Botfather](https://t.me/BotFather) в вашем аккаунте Telegram:
     ![Botfather](./media/botfather.png)
@@ -472,12 +555,12 @@ WARP встроен, и дополнительная установка не т�
 
 </details>
 
-## Маршруты API
+### Маршруты API
 
 <details>
   <summary>Нажмите для получения информации о маршрутах API</summary>
 
-#### Использование
+##### Использование
 
 - [API документация](https://documenter.getpostman.com/view/5146551/2sAXxP8Y12)
 - `/login` с `POST`-данными: `{username: '', password: ''}` для входа
@@ -516,12 +599,12 @@ WARP встроен, и дополнительная установка не т�
 - [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/5146551-e6aac565-e0e2-46df-acff-2607a51bbd04?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D5146551-e6aac565-e0e2-46df-acff-2607a51bbd04%26entityType%3Dcollection%26workspaceId%3Dd64f609f-485a-4951-9b8f-876b3f917124)
 </details>
 
-## Переменные среды
+### Переменные среды
 
 <details>
   <summary>Нажмите для получения информации о переменных среды</summary>
 
-#### Использование
+##### Использование
 
 | Переменная       |                      Тип                       | Значение по умолчанию |
 | ---------------- | :------------------------------------------:   | :-------------------- |
@@ -539,7 +622,7 @@ XUI_BIN_FOLDER="bin" XUI_DB_FOLDER="/etc/x-ui" go build main.go
 
 </details>
 
-## Предварительный Просмотр
+### Предварительный Просмотр
 
 ![1](./media/1.png)
 ![2](./media/2.png)
@@ -549,15 +632,67 @@ XUI_BIN_FOLDER="bin" XUI_DB_FOLDER="/etc/x-ui" go build main.go
 ![6](./media/6.png)
 ![7](./media/7.png)
 
-## Особая благодарность
+### Особая благодарность
 
 - [alireza0](https://github.com/alireza0/)
 
-## Благодарности
+### Благодарности
 
 - [Iran v2ray rules](https://github.com/chocolate4u/Iran-v2ray-rules) (License: **GPL-3.0**): _Enhanced v2ray/xray and v2ray/xray-clients routing rules with built-in Iranian domains and a focus on security and adblocking._
 - [Vietnam Adblock rules](https://github.com/vuong2023/vn-v2ray-rules) (License: **GPL-3.0**): _A hosted domain hosted in Vietnam and blocklist with the most efficiency for Vietnamese._
 
-## Число звёзд со временем
+### Число звёзд со временем
 
 [![Stargazers over time](https://starchart.cc/MHSanaei/3x-ui.svg)](https://starchart.cc/MHSanaei/3x-ui)
+
+---
+
+<a name="structure"></a>
+
+## Структура проекта
+
+```text
+3x-ui/
+├── main.go                 # Program entry point
+├── web/                    # Panel interface and routing
+├── database/               # Database models and access
+├── xray/                   # Xray configuration and process management
+├── install.sh              # Installation script
+└── media/                  # Logo and guide screenshots
+```
+
+---
+
+<a name="documentation"></a>
+
+## Документация
+
+- [Полное руководство](#usage-guide)
+
+---
+
+<a name="contributing"></a>
+
+## Участие
+
+When reporting an issue, include the OS, version, reproduction steps, expected behavior and redacted logs. Check the relevant guidance and implementation, and run validation appropriate to your change.
+
+For upstream features and releases, use the original project links retained above.
+
+---
+
+<a name="license"></a>
+
+## Лицензия и авторство
+
+See [GPL-3.0](LICENSE) for the license.
+
+<div align="center">
+
+### Project Activity
+
+[![Star History](https://api.star-history.com/svg?repos=langesmesser/3x-ui&type=Date)](https://www.star-history.com/#langesmesser/3x-ui&Date)
+
+[Contributors](https://github.com/langesmesser/3x-ui/graphs/contributors)
+
+</div>
